@@ -1,0 +1,66 @@
+{% extends "app/company/base1.html" %}
+{% load static %}
+{% block content %}
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+                        For more information about DataTables, please visit the <a target="_blank"
+                            href="https://datatables.net">official DataTables documentation</a>.</p>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Job Name</th>
+                                            <th>Company Name</th>
+                                            <th>Location</th>
+                                            <th>Company Website</th>
+                                            <th>Experience</th>
+                                            <th>Salary Packege</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Job Name</th>
+                                            <th>Company Name</th>
+                                            <th>Location</th>
+                                            <th>Company Website</th>
+                                            <th>Experience</th>
+                                            <th>Salary Packege</th>
+                                        </tr>
+                                    </tfoot>
+                                    {% if all_job %}
+                                    <tbody>
+                                        {% for i in all_job %}
+                                        <tr>
+                                            <td>{{ i.jobname }}</td>
+                                            <td>{{ i.company_name }}</td>
+                                            <td>{{ i.location }}</td>
+                                            <td>{{ i.company_website }}</td>
+                                            <td>{{ i.experience }}</td>
+                                            <td><span style="color: rgb(193, 10, 10);">$</span> {{ i.selary_packege }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    {% endif %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+{% endblock %}

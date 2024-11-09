@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Details Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .form-container {
+            width: 100%;
+            max-width: 600px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Post a New Job</h2>
+        <h5>{{ msg }}</h5>
+        <form method="post" action="{% url 'jobposted' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="jobname">Job Name</label>
+                <input type="text" id="jobname" name="jobname" required>
+            </div>
+            <div class="form-group">
+                <label for="company_name">Company Name</label>
+                <input type="text" id="company_name" name="company_name" required>
+            </div>
+            <div class="form-group">
+                <label for="job_description">Job Description</label>
+                <textarea id="job_description" name="job_description" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="company_information">Company Information</label>
+                <textarea id="company_information" name="company_information" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="qualification">Qualification</label>
+                <input type="text" id="qualification" name="qualification" required>
+            </div>
+            <div class="form-group">
+                <label for="responsibilities">Responsibilities</label>
+                <textarea id="responsibilities" name="responsibilities" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" required>
+            </div>
+            <div class="form-group">
+                <label for="selary_packege">Salary Package</label>
+                <input type="text" id="selary_packege" name="selary_packege" required>
+            </div>
+            <div class="form-group">
+                <label for="experience">Experience (in years)</label>
+                <input type="number" id="experience" name="experience" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="company_website">Company Website</label>
+                <input type="text" id="company_website" name="company_website">
+            </div>
+            <div class="form-group">
+                <label for="company_email">Company Email</label>
+                <input type="email" id="company_email" name="company_email" required>
+            </div>
+            <div class="form-group">
+                <label for="company_contact">Company Contact</label>
+                <input type="number" id="company_contact" name="company_contact" pattern="[0-9]{10,15}" required>
+            </div>
+             <!-- Logo Upload -->
+             <div class="form-group">
+                <label for="logo">Company Logo:</label>
+                <input type="file" class="form-control-file" id="logo" name="logo" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Post Job">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('jobDetailsForm').addEventListener('submit', function(event) {
+            // Add any custom validation or actions here
+            alert("Job posted successfully!");
+            event.preventDefault(); // Prevent actual form submission for demo purposes
+        });
+    </script>
+</body>
+</html>
